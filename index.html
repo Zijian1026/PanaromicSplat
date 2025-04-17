@@ -1,1 +1,268 @@
-<h1>PanaromicSplat</h1>
+
+<!DOCTYPE html>
+<html>
+
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-55V1E709SK"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-55V1E709SK');
+  </script>
+
+  <meta charset="utf-8">
+  <meta name="description"
+    content="InstantSplat, unifies dense stereo priors with 3D-GS to build 3D Gaussians of large-scale scenes from sparse-view and pose-free images in less than 1 minute. ">
+  <meta name="keywords" content="Instantsplat, Gaussian Splatting, Gaussian, LightGaussian">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>InstantSplat: Sparse-view Gaussian Splatting in Seconds
+  </title>
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-PYVRSFMDRL"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+
+    gtag('config', 'G-PYVRSFMDRL');
+  </script>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+  <script src="./static/js/script.js"></script>
+
+</head>
+
+<body>
+
+  <!-- <nav class="navbar" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+  <div class="navbar-menu">
+    <div class="navbar-start" style="flex-grow: 1; justify-content: center;">
+      <a class="navbar-item" href="">
+      <span class="icon">
+          <i class="fas fa-home"></i>
+      </span>
+      </a>
+      <div class="navbar-item has-dropdown is-hoverable">
+        <a class="navbar-link">
+          More Research
+        </a>
+        <div class="navbar-dropdown">
+          <a class="navbar-item" href="https://hypernerf.github.io">
+            HyperNeRF
+          </a>
+          <a class="navbar-item" href="https://nerfies.github.io">
+            Nerfies
+          </a>
+          <a class="navbar-item" href="https://latentfusion.github.io">
+            LatentFusion
+          </a>
+          <a class="navbar-item" href="https://photoshape.github.io">
+            PhotoShape
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav> -->
+
+
+  <section class="hero">
+    <div class="hero-body">
+      <div class="container is-max-desktop">
+        <div class="columns is-centered">
+          <div class="column has-text-centered">
+            <h1 class="title is-1 publication-title"><span
+                style="color: #4CAF50 ;font-weight: bolder;">InstantSplat</span>: Sparse-view Gaussian Splatting in Seconds</h1>
+            <div class="is-size-5 publication-authors">
+              <span class="author-block">  
+                <a href="https://zhiwenfan.github.io/">Zhiwen Fan</a><sup>1,2</sup><sup>*&dagger;</sup>,</span>
+              <span class="author-block">
+                <a href="https://kairunwen.github.io/">Kairun Wen</a><sup>3</sup><sup>*</sup>,</span>
+              <span class="author-block">                
+                <a href="https://scholar.google.com/citations?user=uQV5aCsAAAAJ&hl=zh-CN">Wenyan Cong</a><sup>1</sup><sup>*</sup>,</span>
+              <span class="author-block">
+                <a href="https://kevin-2017.github.io/">Kevin Wang</a><sup>1</sup>,</span>
+              <span class="author-block">
+                <a href="https://github.com/zjrandom951">Jian Zhang</a><sup>3</sup>,</span>
+              <span class="author-block">
+                <a href="https://scholar.google.com/citations?user=k5hVBfMAAAAJ&hl=en">Xinghao Ding</a><sup>3</sup>,</span>
+              <span class="author-block">
+                <a href="https://faculty.cc.gatech.edu/~danfei/">Danfei Xu</a><sup>2,4</sup>,</span>
+              <span class="author-block">
+                <a href="https://www.borisivanovic.com/">Boris Ivanovic</a><sup>2</sup>,</span>
+              <span class="author-block">
+                <a href="https://web.stanford.edu/~pavone/">Marco Pavone</a><sup>2,5</sup>,</span>
+              <span class="author-block">
+                <a href="https://geopavlakos.github.io/">Georgios Pavlakos</a><sup>1</sup>,</span>
+              <span class="author-block">
+                <a href="https://vita-group.github.io/research.html">Zhangyang Wang</a><sup>1</sup></span>
+              <span class="author-block">
+                <a href="https://yuewang.xyz/">Yue Wang</a><sup>2,6</sup>,</span>
+          </div>
+
+          <!-- affiliations -->
+          <div class="subtitle is-size-5">
+          <!-- <div class="is-size-5 publication-authors"> -->
+            <sup>1</sup> The University of Texas at Austin &nbsp;
+            <sup>2</sup> Nvidia &nbsp;
+            <sup>3</sup> Xiamen University<br>
+            <sup>4</sup> Georgia Institute of Technology &nbsp;
+            <sup>5</sup> Stanford University &nbsp;
+            <sup>6</sup> University of Southern California<br>
+            <sup>*</sup> Equal Contribution
+            <sup>&dagger;</sup> Project Leader
+            <!-- <span class="author-block"><sup>1</sup>The University of Texas at Austin</span>
+            <span class="author-block"><sup>2</sup>Nvidia</span> <br>
+            <span class="author-block"><sup>3</sup>Xiamen University</span> <br>
+            <span class="author-block"><sup>4</sup>Georgia Institute of Technology</span> <br>
+            <span class="author-block"><sup>5</sup>Stanford University</span> <br>
+            <span class="author-block"><sup>6</sup>University of Southern California</span> <br>
+            <span class="author-block"><sup>*</sup>denotes equal contribution</span> -->
+          </div>
+
+          <!-- TODO: update paper and video link once upload -->
+          <div class="column has-text-centered">
+            <!-- <div class="publication-links"> -->
+              <!-- PDF Link. -->
+              <span class="link-block">
+              <a href="https://arxiv.org/pdf/2403.20309.pdf"
+                 class="external-link button is-normal is-rounded is-dark">
+                <span class="icon">
+                    <i class="fas fa-file-pdf"></i>
+                </span>
+                <span>Paper</span>
+              </a>
+              </span>
+              <span class="link-block">
+              <a href="https://arxiv.org/abs/2403.20309"
+                 class="external-link button is-normal is-rounded is-dark">
+                <span class="icon">
+                    <i class="ai ai-arxiv"></i>
+                </span>
+                <span>arXiv</span>
+              </a>
+            </span>
+              <!-- Video Link. -->
+              <span class="link-block">
+                <a href="https://www.youtube.com/watch?v=fxf_ypd7eD8" class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                    <i class="fab fa-youtube"></i>
+                  </span>
+                  <span>Video</span>
+                </a>
+              </span>
+              <!-- Code Link. -->
+              <span class="link-block">
+                <a href="https://github.com/NVlabs/InstantSplat"
+                  class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                    <i class="fab fa-github"></i>
+                  </span>
+                  <span>Code</span>
+                </a>
+              </span>
+              <!-- Demo Link. -->
+              <span class="link-block">
+                <a href="https://huggingface.co/spaces/kairunwen/InstantSplat"
+                  class="external-link button is-normal is-rounded is-dark">
+                  <span>🤗 Demo</span>
+                </a>
+              </span>
+            </div>
+
+
+          <!-- Video Link. -->
+          <!-- <span class="link-block">
+                  <a href="https://youtu.be/470hul75bSM" class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                      <i class="fab fa-youtube"></i>
+                    </span>
+                    <span>Video</span>
+                  </a> -->
+          </span>
+          <!-- Code Link. -->
+          <!-- <span class="link-block">
+                  <a href="https://github.com/VITA-Group/Instantsplat"
+                    class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                      <i class="fab fa-github"></i>
+                    </span>
+                    <span>Code</span>
+                  </a>
+                </span> -->
+        </div>
+
+      </div>
+    </div>
+    </div>
+    </div>
+    </div>
+  </section>
+
+
+  
+
+  
+  
+
+  <!-- TODO: update the arxiv link and github -->
+  <footer class="footer">
+    <div class="container">
+      <div class="content has-text-centered">
+        <!-- <a class="icon-link" href="">
+          <i class="fas fa-file-pdf"></i>
+        </a> -->
+        <!-- <a class="icon-link" href="" class="external-link" disabled>
+          <i class="fab fa-github"></i> -->
+        </a>
+      </div>
+      <div class="columns is-centered">
+        <div class="column is-8">
+          <div class="content">
+            <p>
+              This website is licensed under a <a rel="license"
+                href="http://creativecommons.org/licenses/by-sa/4.0/">Creative
+                Commons Attribution-ShareAlike 4.0 International License</a>.
+            </p>
+            <p>
+              We thank the authors of
+              We thank the authors of <a href="https://nerfies.github.io/">Nerfies</a> that kindly open sourced the
+              template of this website.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+</body>
+
+</html>
